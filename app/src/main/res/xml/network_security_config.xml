@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">reddit.com</domain>
+        <domain includeSubdomains="true">redd.it</domain>
+        <domain includeSubdomains="true">imgur.com</domain>
+        <domain includeSubdomains="true">i.redd.it</domain>
+        <domain includeSubdomains="true">preview.redd.it</domain>
+    </domain-config>
+</network-security-config>

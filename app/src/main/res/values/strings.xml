@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MemeAlbum 🐸</string>
+    <string name="loading">Đang tải meme…</string>
+    <string name="error_load">Không tải được, thử lại nhé!</string>
+    <string name="share">Chia sẻ</string>
+    <string name="copy_link">Copy link</string>
+    <string name="delete">Xóa</string>
+</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Frog emoji style icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,20 C38,20 25,33 25,49 C25,58 29,66 36,71 L36,80 C36,82 38,84 40,84 L68,84 C70,84 72,82 72,80 L72,71 C79,66 83,58 83,49 C83,33 70,20 54,20 Z" />
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M54,22 C39,22 27,34 27,49 C27,57 31,64 37,69 L38,80 C38,81 39,82 40,82 L68,82 C69,82 70,81 70,80 L71,69 C77,64 81,57 81,49 C81,34 69,22 54,22 Z" />
+    <!-- Eyes -->
+    <circle android:fillColor="#FFFFFF" android:cx="43" android:cy="44" android:r="7" />
+    <circle android:fillColor="#FFFFFF" android:cx="65" android:cy="44" android:r="7" />
+    <circle android:fillColor="#1A1A1A" android:cx="44" android:cy="44" android:r="4" />
+    <circle android:fillColor="#1A1A1A" android:cx="66" android:cy="44" android:r="4" />
+    <!-- Smile -->
+    <path
+        android:strokeColor="#1A1A1A"
+        android:strokeWidth="2"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M44,60 Q54,68 64,60" />
+</vector>
