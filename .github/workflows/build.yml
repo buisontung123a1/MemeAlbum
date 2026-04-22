@@ -1,4 +1,4 @@
-name: Build APK
+name: Build & Release APK
 
 on:
   push:
@@ -53,9 +53,48 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew assembleDebug --stacktrace --no-daemon
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
+      - name: Get version info
+        id: version
+        run: |
+          echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
+          echo "sha=${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
+
+      - name: Rename APK
+        run: |
+          cp app/build/outputs/apk/debug/app-debug.apk \
+             app/build/outputs/apk/debug/MemeAlbum-v${{ steps.version.outputs.date }}-${{ steps.version.outputs.sha }}.apk
+
+      - name: Delete old release if exists
+        run: |
+          gh release delete latest-build --yes || true
+          git push origin :refs/tags/latest-build || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: MemeAlbum-debug-apk
-          path: app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 7
+          tag_name: latest-build
+          name: "🐸 MemeAlbum - Build ${{ steps.version.outputs.date }}"
+          body: |
+            ## 📦 MemeAlbum Debug APK
+
+            **Build:** `${{ steps.version.outputs.date }}`
+            **Commit:** `${{ steps.version.outputs.sha }}`
+
+            ### Cách cài:
+            1. Tải file `.apk` bên dưới
+            2. Bật **Cài từ nguồn không rõ** trong Settings → Security
+            3. Mở file APK → Cài đặt
+
+            ### Tính năng:
+            - 🎵 Splash screen YouTube 10 giây
+            - 📸 Album meme từ r/memes (Hot / New / Top)
+            - 🔍 Zoom ảnh, share, copy link
+            - ♾️ Infinite scroll tự load thêm
+          files: |
+            app/build/outputs/apk/debug/MemeAlbum-v${{ steps.version.outputs.date }}-${{ steps.version.outputs.sha }}.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
