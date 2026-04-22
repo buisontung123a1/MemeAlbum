@@ -88,16 +88,20 @@ class PhotoViewActivity : AppCompatActivity() {
             .load(meme.imageUrl)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
-                    e: GlideException?, model: Any?,
-                    target: Target<Drawable>?, isFirstResource: Boolean
+                    e: GlideException?,
+                    model: Any?,
+                    target: Target<Drawable>,
+                    isFirstResource: Boolean
                 ): Boolean {
                     startPostponedEnterTransition()
                     return false
                 }
 
                 override fun onResourceReady(
-                    resource: Drawable?, model: Any?,
-                    target: Target<Drawable>?, dataSource: DataSource?,
+                    resource: Drawable,
+                    model: Any,
+                    target: Target<Drawable>?,
+                    dataSource: DataSource,
                     isFirstResource: Boolean
                 ): Boolean {
                     startPostponedEnterTransition()
